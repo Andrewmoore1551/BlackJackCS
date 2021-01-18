@@ -73,14 +73,14 @@ namespace BlackJackCS
             static void Main(string[] args)
             {
 
-                var userChoice = Console.ReadLine().ToUpper().Trim();
+                var userChoice = "YES";
                 while (userChoice == "YES")
                 {
                     var deck = new List<Card>();
 
                     var suits = new List<string>() { "Club", "Diamond", "Heart", "Spade" };
 
-                    var faces = new List<string>() { "2", "3", "4", "5", "6", "7", "8", "9", "10", "jack", "Queen", "King", "Ace" };
+                    var faces = new List<string>() { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace" };
 
                     // var value = new List<int>() { 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
 
@@ -97,7 +97,7 @@ namespace BlackJackCS
                             newCard.Face = currentFace;
 
 
-                            Console.WriteLine($"The {newCard.Suit} of {newCard.Face} is worth {newCard.Value()}");
+
 
                             deck.Add(newCard);
 
@@ -167,7 +167,7 @@ namespace BlackJackCS
 
 
                         Console.WriteLine("What do you want? HIT or STAND");
-                        hitOrStand = Console.ReadLine();
+                        hitOrStand = Console.ReadLine().ToUpper().Trim();
                         if (hitOrStand == "HIT")
                         {
                             var cardFromSelectingHitOption = deck[0];
@@ -175,6 +175,7 @@ namespace BlackJackCS
 
                             playerHand.CardsInHand.Add(cardFromSelectingHitOption);
                         }
+
                     } while (hitOrStand == "HIT" && playerHand.TotalValue() < 21);
 
                     if (playerHand.TotalValue() > 21)
@@ -199,11 +200,11 @@ namespace BlackJackCS
                     Console.WriteLine();
                     foreach (var cardInDealerHand in dealerHand.CardsInHand)
                     {
-                        Console.WriteLine($"You have the {cardInDealerHand.Face} of {cardInDealerHand.Suit}");
+                        Console.WriteLine($"Dealer has the {cardInDealerHand.Face} of {cardInDealerHand.Suit}");
                     }
 
 
-                    Console.WriteLine($"THe dealer has {dealerHand.TotalValue()}");
+                    Console.WriteLine($"The dealer has {dealerHand.TotalValue()}");
 
                     if (playerHand.TotalValue() > 21)
                     {
